@@ -49,6 +49,17 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
+                     <form method="GET" action="{{ route('pelanggan.index') }}" >
+          <div class="row">
+              <div class="col-md-2">
+                  <select name="gender" class="form-select" onchange="this.form.submit()" class="mb-3">
+                      <option value="">All</option>
+                      <option value="Male" {{ request('gender')=='Male' ? 'selected' : '' }}>Male</option>
+                      <option value="Female" {{ request('gender')=='Female' ? 'selected' : '' }}>Female</option>
+                  </select>
+              </div>
+          </div>
+      </form>
                     <table id="table-pelanggan" class="table table-centered table-nowrap mb-0 rounded">
                         <thead class="thead-light">
                             <tr>
@@ -62,8 +73,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dataPelanggan as $item)
+                            @foreach ($dataPelanggan as $index => $item)
                                 <tr>
+                                    <td>{{ $dataPelanggan->firstItem() + $index }}</td>
                                     <td>{{ $item->first_name }}</td>
                                     <td>{{ $item->last_name }}</td>
                                     <td>{{ $item->birthday }}</td>
@@ -101,6 +113,11 @@
                             @endforeach
                         </tbody>
                     </table>
+                     <div class="mt-3">
+
+        {{ $dataPelanggan->links('pagination::simple-bootstrap-5') }}
+
+    </div>
                 </div>
             </div>
         </div>
