@@ -67,18 +67,19 @@
         	@if(request('search'))
 							<a href="{{ request()->fullUrlWithQuery(['search'=> null]) }}" class="btn btn-outline-secondary ml-3" id="clear-search"> Clear</a>
 					@endif
-        
-        
-        
+
+
+
     </div>
-    
+
 </div>
-              
+
           </div>
       </form>
                     <table id="table-pelanggan" class="table table-centered table-nowrap mb-0 rounded">
                         <thead class="thead-light">
                             <tr>
+                                <th class="border-0">Number</th>
                                 <th class="border-0">First Name</th>
                                 <th class="border-0">Last Name</th>
                                 <th class="border-0">Birthday</th>

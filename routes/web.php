@@ -1,9 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/pcr', function () {
     return 'Selamat Datang di Website Kampus PCR!';
@@ -35,7 +40,9 @@ Route::post('question/store', [QuestionController::class, 'store'])
         ->name('question.store');
 
 use App\Http\Controllers\AuthController;
+Route::get('/auth',[AuthController::class,'index']);
 
+Route::post('/auth/login', [AuthController::class, 'login']);
 
 use App\Http\Controllers\PegawaiController;
 Route::get('/pegawai', [PegawaiController::class, 'form']);
@@ -47,4 +54,8 @@ Route::get('dashboard', [DashboardController::class, 'index'])
 
 use App\Http\Controllers\PelangganController;
 Route::resource('pelanggan', PelangganController::class);
-// edcvefv
+
+use App\Http\Controllers\UserController;
+Route::resource('user', UserController::class);
+
+use App\Http\Controllers\ProfileController;
